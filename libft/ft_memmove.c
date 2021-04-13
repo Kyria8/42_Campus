@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 15:34:23 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/13 17:34:44 by vmontero         ###   ########.fr       */
+/*   Created: 2021/04/13 18:37:09 by vmontero          #+#    #+#             */
+/*   Updated: 2021/04/13 19:02:16 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
-#include <stdio.h>
 
-void	*ft_memset(void *s, int c, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t			i;
-	unsigned char	*mid;
+	size_t	i;
 
-	mid = (unsigned char *)s;
 	i = 0;
-	if (n == 0)
-		return (s);
-	while (i < n)
+	if (dest == 0 && src == 0)
+		return (0);
+	if (src < dest)
+		while (n--)
+			*(unsigned char *)(dest + n) = *(unsigned char *)(src + n);
+	else
 	{
-		*mid = (unsigned char)c;
-		i++;
-		if (n)
-			mid++;
+		while (i < n)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			i++;
+		}
 	}
-	return (s);
+	return (dest);
 }

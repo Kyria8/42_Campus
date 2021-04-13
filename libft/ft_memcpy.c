@@ -6,16 +6,17 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:59:09 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/13 16:37:24 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/13 18:01:17 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <string.h>
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t num)
 {
-	size_t i;
+	size_t	i;
+
+	i = 0;
 	if (dest == 0 && src == 0)
 		return (0);
 	while (i < num)
@@ -24,11 +25,4 @@ void	*ft_memcpy(void *dest, const void *src, size_t num)
 		i++;
 	}
 	return (dest);
-}
-
-int	main(void)
-{
-	char a[7] = "Hola Sr";
-	char end[7];
-	int i = 0;
 }
