@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:31:17 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/13 19:02:29 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/14 16:38:48 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -35,7 +35,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *str);
 //int				    ft_strlen(char *str);
 size_t				ft_strlen(const char *str);
-size_t				ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t				ft_strlcpy(char *dest, const char *src, size_t des_size);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 
 char				*ft_strchr(const char *s, int c);

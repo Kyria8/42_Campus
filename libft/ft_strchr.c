@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 18:13:21 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/14 12:59:21 by vmontero         ###   ########.fr       */
+/*   Created: 2021/04/14 13:22:30 by vmontero          #+#    #+#             */
+/*   Updated: 2021/04/14 13:50:52 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
+	size_t	len;
 
+	len = ft_strlen(s);
 	i = 0;
-	while (n > 0)
+	if (s[i] == 0)
+		return (0);
+	while (i < len + 1)
 	{
-		((unsigned char *)s)[i] = 0;
+		if (s[i] == (unsigned char)c)
+			return ((char *)s + i);
 		i++;
-		n--;
 	}
+	return (0);
 }
