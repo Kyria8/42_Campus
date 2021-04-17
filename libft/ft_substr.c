@@ -1,37 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 18:59:05 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/17 19:43:27 by vmontero         ###   ########.fr       */
+/*   Created: 2021/04/17 13:21:30 by vmontero          #+#    #+#             */
+/*   Updated: 2021/04/17 17:03:12 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*res;
 	size_t	i;
 	size_t	j;
 
-	i = 0;
-	if (*s2 == '\0')
-		return ((char *)s1);
-	if (len == 0)
+	j = 0;
+	if (!s)
 		return (NULL);
-	while (s1[i] && i < len)
+	res = (char *)malloc(sizeof(char) * (len + 1));
+	if (res == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i])
 	{
-		j = 0;
-		while (s2[j] == s1[i + j] && j + i < len)
+		if (i >= start && j < len)
 		{
-			if (s2[j + 1] == '\0')
-				return ((char *)s1 + i);
+			res[j] = s[i];
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	res[j] = '\0';
+	return (res);
 }

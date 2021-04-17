@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 16:21:58 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/15 14:30:31 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/16 16:40:11 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t des_size)
 {
 	size_t	i;
 	size_t	len;
-	
+
 	if (!dest && !src)
 		return (0);
 	len = ft_strlen(src);

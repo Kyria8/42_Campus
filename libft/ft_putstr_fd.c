@@ -1,37 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 18:59:05 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/17 19:43:27 by vmontero         ###   ########.fr       */
+/*   Created: 2021/04/17 17:53:48 by vmontero          #+#    #+#             */
+/*   Updated: 2021/04/17 18:32:23 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
 
 	i = 0;
-	if (*s2 == '\0')
-		return ((char *)s1);
-	if (len == 0)
-		return (NULL);
-	while (s1[i] && i < len)
+	if (s)
 	{
-		j = 0;
-		while (s2[j] == s1[i + j] && j + i < len)
+		while (s[i])
 		{
-			if (s2[j + 1] == '\0')
-				return ((char *)s1 + i);
-			j++;
-		}
-		i++;
+			ft_putchar_fd(s[i], fd);
+			i++;
+		}	
 	}
-	return (0);
 }

@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 18:59:05 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/17 19:43:27 by vmontero         ###   ########.fr       */
+/*   Created: 2021/04/16 17:34:50 by vmontero          #+#    #+#             */
+/*   Updated: 2021/04/17 17:01:47 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+char	*ft_strdup(const char *s1)
 {
+	char	*res;
 	size_t	i;
 	size_t	j;
 
 	i = 0;
-	if (*s2 == '\0')
-		return ((char *)s1);
-	if (len == 0)
-		return (NULL);
-	while (s1[i] && i < len)
-	{
-		j = 0;
-		while (s2[j] == s1[i + j] && j + i < len)
-		{
-			if (s2[j + 1] == '\0')
-				return ((char *)s1 + i);
-			j++;
-		}
+	while (s1[i])
 		i++;
+	res = malloc(i + 1);
+	j = 0;
+	if (res != '\0')
+	{
+		while (s1[j])
+		{
+			res[j] = s1[j];
+			j++;
+			res[j] = '\0';
+		}
+		return (res);
 	}
 	return (0);
 }

@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/15 18:59:05 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/17 19:43:27 by vmontero         ###   ########.fr       */
+/*   Created: 2021/04/16 17:05:34 by vmontero          #+#    #+#             */
+/*   Updated: 2021/04/16 17:33:27 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *s1, const char *s2, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
 	size_t	i;
-	size_t	j;
+	char	*res;
 
+	res = malloc(count * size);
+	if (!res)
+		return (0);
 	i = 0;
-	if (*s2 == '\0')
-		return ((char *)s1);
-	if (len == 0)
-		return (NULL);
-	while (s1[i] && i < len)
+	while (i <= count * size)
 	{
-		j = 0;
-		while (s2[j] == s1[i + j] && j + i < len)
-		{
-			if (s2[j + 1] == '\0')
-				return ((char *)s1 + i);
-			j++;
-		}
-		i++;
+		(res[i] = 0);
+		 i++;
 	}
-	return (0);
+	return (res);
 }
