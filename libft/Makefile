@@ -6,7 +6,7 @@
 #    By: vmontero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/13 17:09:13 by vmontero          #+#    #+#              #
-#    Updated: 2021/04/17 20:40:05 by vmontero         ###   ########.fr        #
+#    Updated: 2021/04/20 18:09:29 by vmontero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS = 	ft_atoi.c		\
 		ft_isascii.c	\
 		ft_isdigit.c	\
 		ft_isprint.c	\
+		ft_itoa.c		\
 		ft_memset.c		\
 		ft_memchr.c		\
 		ft_memcmp.c		\

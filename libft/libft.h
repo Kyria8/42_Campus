@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 15:31:17 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/17 20:06:47 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/20 18:09:08 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef LIBFT_H
@@ -50,6 +50,6 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
-//char				*ft_itoa(int n);
+char				*ft_itoa(int n);
 
 #endif

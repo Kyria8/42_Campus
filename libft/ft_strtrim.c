@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/17 20:06:02 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/19 16:32:45 by vmontero         ###   ########.fr       */
+/*   Created: 2021/04/20 19:38:45 by vmontero          #+#    #+#             */
+/*   Updated: 2021/04/20 19:53:04 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	len;
 	char	*res;
+	size_t	len;
+	size_t	i;
 
-	if (s1 && s2)
+	if (s1)
 	{
-		len = ft_strlen(s1) + ft_strlen(s2);
-		res = (char *)malloc(sizeof(char) * (len + 1));
-		if (res)
-		{
-			ft_strlcpy(res, (char *)s1, len + 1);
-			ft_strlcat(res, (char *)s2, len + 1);
-			return (res);
-		}
-		else
-			return (NULL);
+		while (s1 && s1 ==                                                                                                                                                                                                                                                                                                                               
 	}
-	return (NULL);
 }

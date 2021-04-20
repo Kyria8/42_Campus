@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 17:34:50 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/17 17:01:47 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/19 17:10:53 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strdup(const char *s1)
 	size_t	j;
 
 	i = 0;
+	if (!s1)
+		return (0);
 	while (s1[i])
 		i++;
 	res = malloc(i + 1);
@@ -29,8 +31,8 @@ char	*ft_strdup(const char *s1)
 		{
 			res[j] = s1[j];
 			j++;
-			res[j] = '\0';
 		}
+		res[j] = '\0';
 		return (res);
 	}
 	return (0);
