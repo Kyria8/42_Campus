@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 13:22:30 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/19 16:55:38 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/22 17:27:22 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strchr(const char *s, int c)
 
 	len = ft_strlen(s);
 	i = 0;
+	if (!s)
+		return (0);
 	if (s[i] == 0)
 		return ((char *)s);
 	while (i < len + 1)

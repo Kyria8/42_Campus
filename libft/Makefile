@@ -6,7 +6,7 @@
 #    By: vmontero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/13 17:09:13 by vmontero          #+#    #+#              #
-#    Updated: 2021/04/20 18:09:29 by vmontero         ###   ########.fr        #
+#    Updated: 2021/04/22 13:45:29 by vmontero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,12 +42,14 @@ SRCS = 	ft_atoi.c		\
 		ft_strdup.c		\
 		ft_strjoin.c	\
 		ft_strlcpy.c	\
+		ft_strmapi.c	\
 		ft_strncmp.c	\
 		ft_strnstr.c	\
 		ft_strchr.c		\
 		ft_strrchr.c	\
 		ft_strlcat.c	\
 		ft_strlen.c		\
+		ft_strtrim.c	\
 		ft_substr.c		\
 		ft_tolower.c	\
 		ft_toupper.c	\
