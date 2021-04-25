@@ -6,7 +6,7 @@
 #    By: vmontero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/13 17:09:13 by vmontero          #+#    #+#              #
-#    Updated: 2021/04/22 13:45:29 by vmontero         ###   ########.fr        #
+#    Updated: 2021/04/25 15:16:24 by vmontero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRCS = 	ft_atoi.c		\
 		ft_putendl_fd.c	\
 		ft_putnbr_fd.c	\
 		ft_putstr_fd.c	\
+		ft_split.c		\
 		ft_strdup.c		\
 		ft_strjoin.c	\
 		ft_strlcpy.c	\
