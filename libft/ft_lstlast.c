@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/25 18:35:15 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/26 16:51:17 by vmontero         ###   ########.fr       */
+/*   Created: 2021/04/26 16:54:38 by vmontero          #+#    #+#             */
+/*   Updated: 2021/04/26 17:00:19 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*new_element;
+	t_list	*mid;
 
-	new_element = malloc(sizeof(t_list));
-	if (!new_element)
+	if (!lst)
 		return (NULL);
-	new_element -> content = content;
-	new_element -> next = NULL;
-	return (new_element);
+	mid = lst;
+	while (mid -> next != NULL)
+		mid = mid ->next;
+	return (mid);
 }
-/*
-int main(void)
-{
-	char	text[] = "lorem ipsum dolor sit";
-	t_list *element;
-	element = ft_lstnew((void *)text);
-	printf("\n%s\n", element -> content);
-	return (0);
-}*/

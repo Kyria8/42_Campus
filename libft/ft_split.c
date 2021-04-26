@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 17:23:21 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/25 17:37:05 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/26 16:27:44 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,36 +22,15 @@ static int	ft_count(char const *s, char c)
 	j = 0;
 	while (++i < (int)ft_strlen(s))
 	{
-		if (s[i] == c && s[i + 1] != c && s[i] != '\0')
-			j++;
-	}
-	return (j);
-}
-
-/*static char	*ft_draw(char const *s, char c)
-{
-	char			**tab;
-	int				i;
-	int				j;
-	unsigned int	start;
-
-	i = -1;
-	j = 0;
-	start = 0;
-	while (++i < (int)ft_strlen(s))
-	{
 		if (s[i] != c)
 		{
-			start = i;
 			while (s[i] != c && s[i] != '\0')
 				i++;
-			tab[j] = ft_substr(s, start, (i - start));
 			j++;
 		}
 	}
-	tab[j] = NULL;
-	return (tab);
-}*/
+	return (j);
+}
 
 char	**ft_split(char const *s, char c)
 {
@@ -62,13 +41,11 @@ char	**ft_split(char const *s, char c)
 
 	i = -1;
 	j = 0;
-	start = 0;
-	if (!s || !c)
+	if (!s)
 		return (NULL);
 	tab = (char **)malloc(sizeof(char *) * (ft_count(s, c) + 1));
 	if (!tab)
 		return (NULL);
-//	tab = ft_draw(s, c);
 	while (++i < (int)ft_strlen(s))
 	{
 		if (s[i] != c)
@@ -76,8 +53,7 @@ char	**ft_split(char const *s, char c)
 			start = i;
 			while (s[i] != c && s[i] != '\0')
 				i++;
-			tab[j] = ft_substr(s, start, (i - start));
-			j++;
+			tab[j++] = ft_substr(s, start, (i - start));
 		}
 	}
 	tab[j] = NULL;

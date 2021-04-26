@@ -6,7 +6,7 @@
 #    By: vmontero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/13 17:09:13 by vmontero          #+#    #+#              #
-#    Updated: 2021/04/25 15:16:24 by vmontero         ###   ########.fr        #
+#    Updated: 2021/04/26 18:57:28 by vmontero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,24 +53,41 @@ SRCS = 	ft_atoi.c		\
 		ft_strtrim.c	\
 		ft_substr.c		\
 		ft_tolower.c	\
-		ft_toupper.c	\
+		ft_toupper.c	
+
+SRCSB = ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c		\
+		ft_lstlast.c	\
+		ft_lstadd_back.c	\
+		ft_lstdelone.c		\
+		ft_lstclear.c		\
+		ft_lstiter.c		\
+		ft_lstmap.c			
+
 
 OBJS = $(SRCS:.c=.o)
+
+OBJSB = $(SRCSB:.c=.o)
 
 HEADER = libft.h
 
 all: $(NAME)
 
 $(NAME):	$(SRCS)
-			$(CC)  $(FLAGS) -I $(HEADER) -c  $(SRCS)
+			$(CC) $(FLAGS) -I $(HEADER) -c $(SRCS)
 			$(AR) $(NAME) $(OBJS)
+	
+bonus: 		$(NAME)
+			$(CC) $(FLAGS) -I $(HEADER) -c $(SRCSB)
+			$(AR) $(NAME) $(OBJSB)
 
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJSB)
 
-fclean:
+fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean
+.PHONY: all bonus clean fclean

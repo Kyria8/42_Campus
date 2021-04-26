@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 19:38:45 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/26 15:36:58 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/26 15:21:35 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ static int	ft_cutinit(char const *s1, char const *set)
 		else if (s1[i] != set[j])
 			j++;
 	}
+
+	//printf("retorno iniy-->%d\n",i);
 	return (i);
 }
 
@@ -50,6 +52,7 @@ static int	ft_cutend(char const *s1, char const *set)
 		else if (s1[len] != set[j])
 			j++;
 	}
+	//printf("retorno cutend-->%d\n",len);
 	return (len);
 }
 
@@ -60,9 +63,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 	unsigned int		end;
 	int					len;
 
-	if (!s1 || !set)
+	if(!s1 || !set)
+		return(NULL);
+	if (ft_cutinit(s1, set) > ft_cutend(s1, set))
+			res = malloc(sizeof(char)* 1);
+	else
+		res = malloc(sizeof(char) * (ft_cutend(s1, set) - ft_cutinit(s1, set)));
+	if (!res)
 		return (NULL);
-	res = NULL;
 	if (s1)
 	{
 		init = ft_cutinit(s1, set);
@@ -71,12 +79,23 @@ char	*ft_strtrim(char const *s1, char const *set)
 		if (len >= 0)
 		{
 			res = ft_substr(s1, init, len);
-			if (!res)
-				return (NULL);
 			res[len++] = '\0';
 		}
 		else
-			return (ft_substr(s1, init, 0));
+		{
+			len = 0;
+			return (ft_substr(s1, init, len));
+		}
 	}
-	return (res);
+	return(res);
 }
+
+int main()
+{
+	char	*s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
+	char  *s2= " \n\t";
+
+	printf("---<<<<<<>>>>%s>>>>>>>>",ft_strtrim(s1,s2));
+
+}
+
