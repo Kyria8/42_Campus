@@ -6,12 +6,11 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 19:38:45 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/26 15:36:58 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/27 18:15:41 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	ft_cutinit(char const *s1, char const *set)
 {

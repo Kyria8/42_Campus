@@ -6,12 +6,11 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/25 18:35:15 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/26 16:51:17 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:52:52 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 t_list	*ft_lstnew(void *content)
 {
@@ -24,12 +23,3 @@ t_list	*ft_lstnew(void *content)
 	new_element -> next = NULL;
 	return (new_element);
 }
-/*
-int main(void)
-{
-	char	text[] = "lorem ipsum dolor sit";
-	t_list *element;
-	element = ft_lstnew((void *)text);
-	printf("\n%s\n", element -> content);
-	return (0);
-}*/

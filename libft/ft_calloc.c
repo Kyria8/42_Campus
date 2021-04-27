@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/16 17:05:34 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/16 17:33:27 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:36:02 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_calloc(size_t count, size_t size)
 	i = 0;
 	while (i <= count * size)
 	{
-		(res[i] = 0);
+		res[i] = 0;
 		 i++;
 	}
 	return (res);

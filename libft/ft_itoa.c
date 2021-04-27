@@ -6,12 +6,11 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/19 17:50:27 by vmontero          #+#    #+#             */
-/*   Updated: 2021/04/20 18:41:55 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/04/27 17:50:20 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	ft_count(long int n)
 {
