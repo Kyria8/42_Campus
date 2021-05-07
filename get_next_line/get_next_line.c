@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:11:42 by vmontero          #+#    #+#             */
-/*   Updated: 2021/05/07 18:00:36 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/05/07 18:23:37 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,21 @@ char	*ft_select(char *src, char end)
 	char	*res;
 
 	i = 0;
+	printf("Acabo de entrar y src es: .......%s\n", src);
 	while (src[i] != end)
 	{
 		i++;
 	}
-	res = malloc(sizeof(char) * i);
-	i = 0;
+	//printf("%d\n", i);
+	res = malloc(sizeof(char) * i + 1);
+	i = -1;
 	while (src[i++] != end)
 	{
 		res[i] = src[i];
+		printf("Estoy dentro del bucle de la funcion y res va siendo: ......%c\n", res[i]);
 	}
 	printf("Estoy en la funcion select\n");
-	printf("%s\n", res);
+	printf("Soy el res que devuelve la funcion select: .....%s\n", res);
 	return (res);
 }
 
@@ -44,8 +47,10 @@ int	get_next_line(int fd, char **line)
 	static char	*s[4096];
 	char *temp;
 
+	if (!fd)
+		return (-1);
 	temp = "";
-	printf("Antes del bucle\n");
+	printf("Antes del bucle dentro de Get Next Line, empezamos\n");
 	while (read(fd, buff, BUFFER_SIZE) != 0)
 	{
 		temp = ft_strjoin(temp, buff);
@@ -54,8 +59,8 @@ int	get_next_line(int fd, char **line)
 			{
 	 			*line = ft_select(temp, '\n');
 				*s = ft_strchr(temp, '\n');
-				printf("%s\n", *s + 1);
-				printf("%s\n", *line);
+				printf("Soy lo que va a guardar la variable estatica: ....%s\n", *s + 1);
+				printf("Soy lo que se va a guardar en line: ...%s\n", *line);
 				break;
 			}
 	}
@@ -63,9 +68,6 @@ int	get_next_line(int fd, char **line)
 
 
 	//printf("%d\n", fd);
-//	printf("%zd\n", nr_bytes);
-//	printf("%s\n", *line);
-//	printf("%s\n", *s + 1);
 	return (0);
 }
 
@@ -74,7 +76,7 @@ int main(void)
 	int fd;
 	char	*lines;
 
-	printf("Antes del antes\n");
+	printf("Antes del antes, esta main\n");
 	fd = open("text1.text", O_RDWR);
 	get_next_line(fd, &lines);
 }
