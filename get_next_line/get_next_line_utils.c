@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 17:48:45 by vmontero          #+#    #+#             */
-/*   Updated: 2021/05/06 18:44:51 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/05/08 17:48:46 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,32 @@ char	*ft_strchr(const char *s, int c)
 	while (i < len + 1)
 	{
 		if (s[i] == (unsigned char)c)
-			return ((char *)s + i);
+			return ((char *)s + i + 1);
 		i++;
+	}
+	return (0);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*res;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (s1[i])
+		i++;
+	res = malloc(i + 1);
+	j = 0;
+	if (res != '\0')
+	{
+		while (s1[j])
+		{
+			res[j] = s1[j];
+			j++;
+		}
+		res[j] = '\0';
+		return (res);
 	}
 	return (0);
 }
