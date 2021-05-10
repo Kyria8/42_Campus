@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 17:48:45 by vmontero          #+#    #+#             */
-/*   Updated: 2021/05/08 17:48:46 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/05/10 18:47:05 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,34 @@ char	*ft_strdup(const char *s1)
 		return (res);
 	}
 	return (0);
+}
+
+char *ft_substr(char const *s, unsigned int start, size_t len)
+{
+char *str;
+size_t i;
+size_t j;
+
+if (!s)
+return (0);
+i = -1;
+j = 0;
+while (s[++i] != '\0')
+{
+if (i >= start && j < len)
+j++;
+}
+str = malloc(sizeof(char) * j + 1);
+if (!str)
+return (0);
+j = 0;
+i = 0;
+while (s[j] != '\0')
+{
+if (j >= start && i < len)
+str[i++] = s[j];
+j++;
+}
+str[i] = '\0';
+return (str);
 }
