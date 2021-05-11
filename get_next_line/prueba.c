@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:11:42 by vmontero          #+#    #+#             */
-/*   Updated: 2021/05/11 18:44:52 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/05/11 18:25:07 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,69 @@ int	get_next_line(int fd, char **line)
 	char	buff[BUFFER_SIZE + 1];
 	static char	*s[4096];
 	char *temp;
+	int n;
 
-	if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, buff, 0) < 0)
+	if (!fd || !line || BUFFER_SIZE < 1 || read(fd, buff, 0) < 0)
 	{	
 		printf("PATADA EN LA ESPINILLA");
 		return (-1);
 	}
 	temp = "";
+	/*if (!*s)
+	{
+		*s = ft_strdup("");
+		printf("IF DE S");
+	}*/
+	printf("-Antes del bucle dentro de Get Next Line, empezamos\n");
+	if (*s && ft_strchr(*s, '\n') != 0)
+		{
+			printf("- Estoy en el primer if con s estática llena de cosas\n");
+			*line = cutline(&s[fd]);
+			return (1);
+		}
+	//n = read(fd,buff, BUFFER_SIZE);
 	while (read(fd, buff, BUFFER_SIZE) > 0)
 	{
-		temp = ft_strjoin(temp, buff);
+			//buff[n] = 0;
+		if (!*s)
+		{
+			
+			//n = read(fd,buff, BUFFER_SIZE);
+			//temp = ft_strjoin(temp, buff);
+			printf("PRUEBA RUBEN --->%s<------", temp);
+			printf("-Estamos en el bucle\n");
 
+			temp = ft_strjoin(temp, buff);
+			if (ft_strchr(temp, '\n') != 0)
+				{
+	 				*line = ft_select(temp, '\n');
+					*s = ft_strchr(temp, '\n');
+					printf("-Soy lo que va a guardar la variable estatica: ....%s\n", *s);
+					printf("-Soy lo que se va a guardar en line: ...%s\n", *line);
+					return (1);
+				}
+		//	else if (ft_strchr(temp, '\0') != 0)
+		/*	else
+			{
+	 				printf("- Soy el else que hizo Ruben, pongo un 0 al final");
+					*line = ft_select(temp, '\0');
+					*s = ft_strchr(temp, '\0');
+					return (0);
+			}*/
+		}
+		else
+		{
+			printf("-Segunda llamada a funcion, s tiene cosas que juntar\n");
+			temp = ft_strjoin(*s, buff);
+			*s = NULL;	
+		}
+		
 	}
+	//free(temp);
+
+
+	//printf("%d\n", fd);
+	return (0);
 }
 
 int main(void)
