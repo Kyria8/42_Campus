@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:11:42 by vmontero          #+#    #+#             */
-/*   Updated: 2021/05/13 13:52:26 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/05/17 19:44:36 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,63 +15,71 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 
-# define BUFFER_SIZE 25
-
-char	*ft_select(char *src, char end)
-{
-	int		i;
-	//int		j;
-	char	*res;
-	//char	*aux;
-
-	i = 0;
-	printf("-Acabo de entrar y src es: .......%s\n", src);
-	while (src[i] != end)
-	{
-		i++;
-	}
-	printf("-Soy la cantidad de caracteres que tengo %d\n", i);
-	res = malloc(sizeof(char) * i + 1);
-	res = ft_substr(src, 0, i);
-	res[i] = '\0';
-	//aux = res;
-	//free(res);
-	printf("-Estoy en la funcion select\n");
-	printf("-Soy el res que devuelve la funcion select: .....%s\n", res);
-	return (res);
-}
-
-char	*cutline(char **s, char *line)
+int	cutline(char **s, char **line)
 {
 	int		i;
 	char	*temp;
 
 	i = 0;
 	while ((*s)[i] != '\n' && (*s)[i] != '\0')
-	   i++;
-	if (i < ft_strlen(*s))
+	{	
+	//	printf("####%c###\n", (*s)[i]);
+		i++;
+	}
+	if ((*s)[i] == '\0')
 	{
+		printf("**********\n");
+		*line = ft_strdup(*s);
+		free(*s);
+	}
+	else if ((*s)[i] == '\n')
+	{
+	//	printf("*****%s****\n", *s);
 		*line = ft_substr(*s, 0, i);
-		temp = ft_substr(*s, i, ft_strlen(*s));
+//		printf("--->%s<----\n", *line);
+//		printf("- dentro de cutline, line es: %s\n", *line);
+		temp = ft_substr(*s, (i + 1), ft_strlen(*s));
+//		printf("- Estoy en cutline, la tem es: %s\n", temp);
 		free(*s);
 		*s = temp;
+		return(1);
+	}/*
+	else
+	{
+		*line = ft_substr(*s, 0, i);
+		temp = ft_substr(*s, (i + 1), ft_strlen(*s));
+		free(*s);
+		*s = temp;
+		//return(0);
 	}
-	return (line);
+	if ((*s)[i] == '\0')
+	{
+		*line = ft_strdup(*s);
+		free(*s);
+		*s = NULL;
+	}*/
+	return (0);
 }
 
 int	get_next_line(int fd, char **line)
 {
-	char	buff[BUFFER_SIZE + 1];
+	char		buff[BUFFER_SIZE + 1];
 	static char	*s[4096];
-	char *temp;
+	char		 *temp;
+	int			n;
 
-	if (fd < 0 || !line || BUFFER_SIZE < 1 || read(fd, buff, 0) < 0)
+//	printf("He entrado en la funcion\n");
+	n = read(fd, buff, BUFFER_SIZE);
+//	printf("La lectura es: %d\n", n);
+	if (fd < 0 || !line || BUFFER_SIZE < 1 || n < 0)
 	{	
-		printf("PATADA EN LA ESPINILLA");
+//		printf("PATADA EN LA ESPINILLA");
 		return (-1);
 	}
-	while (read(fd, buff, BUFFER_SIZE) > 0)
+	while (n > 0)
 	{
+//		printf("- Estoy GNL dentro del bucle");
+		buff[n] = '\0';
 		if (!s[fd])
 			s[fd] = ft_strdup(buff);
 		else
@@ -79,38 +87,51 @@ int	get_next_line(int fd, char **line)
 			temp = ft_strjoin(s[fd], buff);
 			free(s[fd]);
 			s[fd] = temp;
+			printf("- LA estatiica es --------%s-------\n", s[fd]);
 		}
 		if (ft_strchr(s[fd], '\n'))
 			break;
+		n = read(fd, buff, BUFFER_SIZE);
 	}
-	if (!s[fd] && (read(fd, buff, BUFFER_SIZE) <= 0))
+	if (!s[fd] && !n)
 	{
 		*line = ft_strdup("");
 		return (0);
 	}
-	else
-	{
-		*line = cutline(&s[fd], *line);
-		//s[fd] = cutline(&s[fd]);
-	}
-	return (1);
+	return (cutline(&s[fd], line));
 }
 
 int main(void)
 {
 	int fd;
 	char	*lines;
+	int	r;
 
 	printf("-Antes del antes, esta main\n");
 	fd = open("text1.text", O_RDWR);
-	get_next_line(fd, &lines);
+	r = get_next_line(fd, &lines);
+	printf("%d\n", r);
+	printf("%s\n", lines);
 	free(lines);
 	printf("\n\n\n\n-----------------\n\n\n");
 	
-	get_next_line(fd, &lines);
+	r = get_next_line(fd, &lines);
+	printf("%d\n", r);
+	printf("%s\n", lines);
+	free(lines);
+	printf("\n\n\n\n-----------------\n\n\n");
+	
+	r = get_next_line(fd, &lines);
+	printf("%d\n", r);
+	printf("%s\n", lines);
+	free(lines);
+	printf("\n\n\n\n-----------------\n\n\n");
+	
+	r = get_next_line(fd, &lines);
+	printf("%d\n", r);
 	free(lines);
 	printf("\n\n\n\n----------------\n\n\n");
 
-	get_next_line(fd, &lines);
+	r = get_next_line(fd, &lines);
 	free(lines);
 }
