@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:11:42 by vmontero          #+#    #+#             */
-/*   Updated: 2021/05/17 19:44:36 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/05/20 14:25:34 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	cutline(char **s, char **line)
 	i = 0;
 	while ((*s)[i] != '\n' && (*s)[i] != '\0')
 	{	
-	//	printf("####%c###\n", (*s)[i]);
+//		printf("####%c###\n", (*s)[i]);
 		i++;
 	}
 	if ((*s)[i] == '\0')
@@ -43,21 +43,7 @@ int	cutline(char **s, char **line)
 		free(*s);
 		*s = temp;
 		return(1);
-	}/*
-	else
-	{
-		*line = ft_substr(*s, 0, i);
-		temp = ft_substr(*s, (i + 1), ft_strlen(*s));
-		free(*s);
-		*s = temp;
-		//return(0);
 	}
-	if ((*s)[i] == '\0')
-	{
-		*line = ft_strdup(*s);
-		free(*s);
-		*s = NULL;
-	}*/
 	return (0);
 }
 
@@ -78,8 +64,8 @@ int	get_next_line(int fd, char **line)
 	}
 	while (n > 0)
 	{
-//		printf("- Estoy GNL dentro del bucle");
-		buff[n] = '\0';
+		printf("- Soy buff -------- %s-----\n", buff);
+		buff[n] = 0;
 		if (!s[fd])
 			s[fd] = ft_strdup(buff);
 		else
@@ -89,8 +75,13 @@ int	get_next_line(int fd, char **line)
 			s[fd] = temp;
 			printf("- LA estatiica es --------%s-------\n", s[fd]);
 		}
-		if (ft_strchr(s[fd], '\n'))
+		if (ft_strchr(buff, '\n'))
 			break;
+	//	else if(ft_strchr(buff, '\0') && n == 0)
+	//	{
+	//		printf("Estoy en el supuesto perdido de mierda");
+	//		break;
+	//	}
 		n = read(fd, buff, BUFFER_SIZE);
 	}
 	if (!s[fd] && !n)
@@ -108,7 +99,7 @@ int main(void)
 	int	r;
 
 	printf("-Antes del antes, esta main\n");
-	fd = open("text1.text", O_RDWR);
+	fd = open("text1.text", O_RDONLY);
 	r = get_next_line(fd, &lines);
 	printf("%d\n", r);
 	printf("%s\n", lines);

@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 17:48:45 by vmontero          #+#    #+#             */
-/*   Updated: 2021/05/10 18:47:05 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/05/18 14:00:48 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		i;
 	if (!s1 || !s2)
 		return (NULL);
-	result = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	result = malloc((ft_strlen(s1) + ft_strlen(s2 + 1)) * sizeof(char));
 	if (!result)
 		return (NULL);
 	i = 0;
