@@ -6,17 +6,18 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 14:16:54 by vmontero          #+#    #+#             */
-/*   Updated: 2021/05/10 13:36:00 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/05/24 17:36:56 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#include <unistd.h>
-#include <stdlib.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <unistd.h>
 
-int	get_next_line(int fd, char **line);
+int		get_next_line(int fd, char **line);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *str);
 char	*ft_strchr(const char *s, int c);

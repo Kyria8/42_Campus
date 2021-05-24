@@ -6,7 +6,7 @@
 /*   By: vmontero <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 16:02:03 by vmontero          #+#    #+#             */
-/*   Updated: 2021/05/21 16:03:00 by vmontero         ###   ########.fr       */
+/*   Updated: 2021/05/24 17:45:39 by vmontero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,32 +91,30 @@ char	*ft_strdup(const char *s1)
 	return (0);
 }
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-char *str;
-size_t i;
-size_t j;
+	char	*str;
+	size_t	i;
+	size_t	j;
 
-if (!s)
-return (0);
-i = -1;
-j = 0;
-while (s[++i] != '\0')
-{
-if (i >= start && j < len)
-j++;
-}
-str = malloc(sizeof(char) * j + 1);
-if (!str)
-return (0);
-j = 0;
-i = 0;
-while (s[j] != '\0')
-{
-if (j >= start && i < len)
-str[i++] = s[j];
-j++;
-}
-str[i] = '\0';
-return (str);
+	if (!s)
+		return (0);
+	i = -1;
+	j = 0;
+	while (s[++i] != '\0')
+		if (i >= start && j < len)
+			j++;
+	str = malloc(sizeof(char) * j + 1);
+	if (!str)
+		return (0);
+	j = 0;
+	i = 0;
+	while (s[j] != '\0')
+	{
+		if (j >= start && i < len)
+			str[i++] = s[j];
+		j++;
+	}
+	str[i] = '\0';
+	return (str);
 }
