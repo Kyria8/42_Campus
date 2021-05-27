@@ -6,13 +6,13 @@
 #    By: vmontero <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/13 17:09:13 by vmontero          #+#    #+#              #
-#    Updated: 2021/04/27 16:12:58 by vmontero         ###   ########.fr        #
+#    Updated: 2021/05/27 18:01:45 by vmontero         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-FLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 CC = gcc 
 
@@ -74,8 +74,7 @@ HEADER = libft.h
 
 all: $(NAME)
 
-$(NAME):	$(SRCS)
-			$(CC) $(FLAGS) -I $(HEADER) -c $(SRCS)
+$(NAME):	$(OBJS)
 			$(AR) $(NAME) $(OBJS)
 	
 bonus: 		$(NAME)
