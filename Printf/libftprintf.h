@@ -11,12 +11,25 @@
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
-# define LIBFTPRINT_H
+# define LIBFTPRINTF_H
 
 #include "libft/libft.h"
 #include <stdio.h>
 #include <unistd.h>
 #include <stdarg.h>
+
+# define TYPE "cspdiuxX%"
+# define FLAGS "-0."
+
+typedef struct s_options
+{
+    int weight;
+    int minus;
+    int zero;
+    int point;
+    int negative;
+
+} t_flags;
 
 int	ft_printf(const char *, ...);
 
