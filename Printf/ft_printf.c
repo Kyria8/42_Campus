@@ -28,13 +28,16 @@ void	ft_flagscheck(const char *format, va_list arg)
 {
 	t_flags *marker;
 	int i;
+	char *aux;
 
 	i = 0;
-	ft_initflags(marker);
-	while (format[i] != TYPE)
-	{
-		
-	}
+	VA BUSCANDO SI HAY PUNTO, Y SI ENCUENTRA EL PUNTO, BUSCA SI HAY NUMERO, PARA MARCAR LA PRECISION, TANTO EN STRING COMO EN NUMEROS.SI NO HAY NUMERO, LA PRECISION ES 0.
+	// ft_initflags(marker);
+	// while (format[i] != TYPE)
+	// 	i++;
+	// aux = ft_substr(format, 0, i);
+	// i = 0;
+	
 }
 void	ft_charmanage(va_list arg)
 {
