@@ -28,6 +28,7 @@ typedef struct s_options
     int zero;
     int point;
     int negative;
+    int is_null;
 
 } t_flags;
 
