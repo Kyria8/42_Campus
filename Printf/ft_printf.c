@@ -17,78 +17,23 @@
 void	ft_charmanage(va_list arg, t_flags *marker)
 {
 	char c;
-
-	c = va_arg(arg, int);
-	write (1, &c, 1);
-}
-void	ft_datadistribution(const char *format, va_list arg, t_flags *marker)
-{
-	if (format[0] == 'c')
-		ft_charmanage(arg, marker);
-}
-t_flags	*ft_initflags(t_flags *marker)
-{
-	marker ->minus = 0;
-	marker ->point = -1;
-	marker ->weight = 0;
-	marker ->zero = 0;
-	marker ->negative = 0;
-	marker ->is_null = 0;
-
-	return (marker);
-}
-void	ft_flagscheck(const char *format, va_list arg)
-{
-	t_flags *marker;
 	int i;
 
 	i = 0;
-	//VA BUSCANDO SI HAY PUNTO, Y SI ENCUENTRA EL PUNTO, BUSCA SI HAY NUMERO, PARA MARCAR LA PRECISION, TANTO EN STRING COMO EN NUMEROS.SI NO HAY NUMERO, LA PRECISION ES 0.
-	ft_initflags(marker);
-	while (format[i] != TYPE)
+	c = va_arg(arg, int);
+	if (marker ->minus == 1)
 	{
-		if (format[i] == '-')
-			marker ->minus++;
-		else if (format[i] == '0')
-			marker ->zero++;
-		else if (format[i] > 0)
-			marker ->weight = format[i];
-		else if (format[i] == '.')
-		{
-			if (format[++i] > 0)
-				{
-					marker ->point = 1;
-					marker ->weight = format[i];
-				}
-			else
-				marker ->point = 0;
-		}
-		else
-			marker ->is_null++;
+		write (1, &c, 1);
 		i++;
+		ft_countweight (marker, i);
+		marker ->weight = 0;
 	}
-	ft_datadistribution(&format[i], arg, marker);
-}
-
-int ft_datatype(const char *format, va_list arg)
-{
-	t_flags *marker;
-	int	i;
-
-	i = 0;
-	if (strchr(TYPE, format[i]) != 0)
-		ft_datadistribution(&format[i], arg, marker);
-	else if (strchr(FLAGS, format[i] != 0))
-	//	FUNCION QUE CHECKEA QUE FLGS HAY ACTIVOS Y ENTRA EN TIPO DE DATO
-		ft_flagscheck(&format[i], arg);
-	// while (format[i])
-	// {
-	// 	if (strchr(TYPE, format[i]) != 0)
-	// 		printf("%d", va_arg(arg, int));
-	// 	i++;
-	// }
-
-	return (i);
+	else if (marker ->weight > 0)
+	{
+		ft_countweight (marker, i);
+		write (1, &c, 1);
+	}
+	write (1, &c, 1);
 }
 
 int	ft_printf(const char *format, ...)

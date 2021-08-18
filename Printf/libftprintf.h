@@ -32,7 +32,15 @@ typedef struct s_options
 
 } t_flags;
 
+void	ft_charmanage(va_list arg, t_flags *marker);
+void	ft_datadistribution(const char *format, va_list arg, t_flags *marker);
+int ft_datatype(const char *format, va_list arg);
+t_flags	*ft_initflags(t_flags *marker);
+void	ft_flagscheck(const char *format, va_list arg);
+void ft_stringmanage(va_list arg, t_flags *marker);
+void ft_countweight (t_flags *marker, int i);
 int	ft_printf(const char *, ...);
+
 
 
 

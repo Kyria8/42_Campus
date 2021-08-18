@@ -23,6 +23,9 @@ RM = rm -f
 AR = ar rcs
 
 SRCS = ft_printf.c		\
+		ft_data.C		\
+		ft_flags		\
+		ft_ft_type.c
 
 OBJS = $(SRCS:.c=.o)
 
